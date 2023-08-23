@@ -13,7 +13,7 @@ export default styled.div`
     margin-left: 2%;
   }
   .add-button {
-    width: 96.3vw;
+    width: 80vw;
     display: flex;
     justify-content: flex-end;
     margin-bottom: 1%;

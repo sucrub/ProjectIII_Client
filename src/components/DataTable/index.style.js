@@ -11,12 +11,12 @@ const DataTableStyle = styled(TableContainer)`
     }
     .table {
       margin: 0 auto;
-      width: 95vw;
+      width: 80vw;
     }
     .pagination {
       display: flex;
       justify-content: center;
-      width: 95vw;
+      width: 80vw;
       margin: 0 auto;
     }
   }

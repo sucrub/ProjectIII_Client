@@ -12,7 +12,7 @@ const CampaignCard = (props) => {
   const { campaign } = props;
   return (
     <Card>
-      <CardContent>
+      <CardContent sx={{ width: "60vw" }}>
         <Typography gutterBottom variant="h5" component="div">
           {campaign.name}
         </Typography>
