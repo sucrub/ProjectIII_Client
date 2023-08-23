@@ -16,4 +16,37 @@ const getPermission = async (data) => {
   return permissions;
 };
 
-export { getPermission };
+const addPermission = async (data) => {
+  let url = `/permission/create-permission`;
+  const permission = await api({
+    headers: { Authorization: `Bearer ${accessToken}` },
+    method: "POST",
+    url,
+    data,
+  });
+  return permission;
+};
+
+const updatePermission = async (data, id) => {
+  let url = `/permission/update-permission/${id}`;
+  const permission = await api({
+    headers: { Authorization: `Bearer ${accessToken}` },
+    method: "PUT",
+    url,
+    data,
+  });
+  return permission;
+};
+
+const deletePermission = async (id) => {
+  console.log(id);
+  let url = `/permission/delete-permission/${id}`;
+  const permission = await api({
+    headers: { Authorization: `Bearer ${accessToken}` },
+    method: "DELETE",
+    url,
+  });
+  return permission;
+};
+
+export { getPermission, addPermission, updatePermission, deletePermission };

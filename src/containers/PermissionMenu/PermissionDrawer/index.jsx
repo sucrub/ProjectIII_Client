@@ -1,19 +1,51 @@
-import React, { useState } from "react";
-import {
-  Box,
-  FormControl,
-  TextField,
-  InputLabel,
-  Select,
-  MenuItem,
-  Typography,
-  Button,
-} from "@mui/material";
+import React, { useState, useEffect } from "react";
+import { Box, TextField, Typography, Button } from "@mui/material";
 import PermissionDrawerStyle from "./index.style";
-import PERMISSION_TYPE from "../../../constants/permissionType";
+import api from "../../../apis";
 
 const PermissionDrawer = (props) => {
   const { open, onClose, title, value } = props;
+
+  const [formValues, setFormValues] = useState({
+    name: "",
+    url: "",
+    method: "",
+    type: "",
+  });
+
+  useEffect(() => {
+    setFormValues({
+      name: value?.name || "",
+      url: value?.url || "",
+      method: value?.method || "",
+      type: value?.type || "",
+    });
+  }, [value]);
+
+  const handleSubmit = async () => {
+    if (title === "Update permission") {
+      const result = await api.permission.updatePermission(
+        formValues,
+        value.id
+      );
+      console.log(result);
+    } else {
+      const result = await api.permission.addPermission(formValues);
+      console.log(result);
+    }
+    console.log(formValues);
+    onClose();
+  };
+
+  // Function to update form values
+  const handleInputChange = (event) => {
+    const { id, value } = event.target;
+    setFormValues((prevValues) => ({
+      ...prevValues,
+      [id]: value,
+    }));
+  };
+
   return (
     <PermissionDrawerStyle anchor="right" open={open} onClose={onClose}>
       <Box className="drawer">
@@ -27,33 +59,38 @@ const PermissionDrawer = (props) => {
         label="Permission name"
         autoFocus
         className="text-field"
-        value={value?.name}
+        value={formValues.name}
+        onChange={handleInputChange}
       />
       <TextField
         required
         id="url"
         label="Permission url"
         className="text-field"
-        value={value?.url}
+        value={formValues.url}
+        onChange={handleInputChange}
       />
       <TextField
         required
         id="method"
         label="Permission method"
         className="text-field"
-        value={value?.method}
+        value={formValues.method}
+        onChange={handleInputChange}
       />
-      <FormControl className="text-field">
-        <InputLabel id="type">Type</InputLabel>
-        <Select labelId="type" label="Type" value={value?.type || ""}>
-          {Object.entries(PERMISSION_TYPE).map(([key, value]) => (
-            <MenuItem key={key} value={value}>
-              {value}
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
-      <Button className="submit-button" variant="contained">
+      <TextField
+        required
+        id="type"
+        label="Permission type"
+        className="text-field"
+        value={formValues.type}
+        onChange={handleInputChange}
+      />
+      <Button
+        className="submit-button"
+        variant="contained"
+        onClick={handleSubmit}
+      >
         Submit
       </Button>
     </PermissionDrawerStyle>

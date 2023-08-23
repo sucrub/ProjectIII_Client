@@ -8,7 +8,7 @@ const Copyright = () => {
       align="center"
       sx={{ mt: 5 }}
     >
-      {`Copyright © Project II ${new Date().getFullYear()}.`}
+      {`Copyright © Project III ${new Date().getFullYear()}.`}
     </Typography>
   );
 };

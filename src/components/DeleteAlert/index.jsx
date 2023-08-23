@@ -8,9 +8,24 @@ import {
 } from "@mui/material";
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 import DeleteAlertStyle from "./index.style";
+import api from "../../apis";
 
 const DeleteAlert = (props) => {
-  const { open, onClose } = props;
+  const { deleteValue, open, onClose, type } = props;
+
+  console.log(deleteValue);
+
+  const handleDelete = async () => {
+    if (type === "permission") {
+      const result = await api.permission.deletePermission(deleteValue);
+      console.log(result);
+    }
+    if (type === "admin") {
+      const result = await api.admin.deleteAdmin(deleteValue);
+      console.log(result);
+    }
+    onClose();
+  };
 
   return (
     <DeleteAlertStyle open={open} onClose={onClose}>
@@ -27,7 +42,7 @@ const DeleteAlert = (props) => {
         </Typography>
       </DialogContent>
       <DialogActions className="dialog-action">
-        <Button variant="contained" color="error" onClick={onClose}>
+        <Button variant="contained" color="error" onClick={handleDelete}>
           Delete
         </Button>
         <Button

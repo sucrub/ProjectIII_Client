@@ -18,6 +18,7 @@ const PermissionMenu = () => {
   const [page, setPage] = useState(0);
   const [offset, setOffset] = useState(0);
   const [permissionList, setPermissionList] = useState([]);
+  const [deleteRow, setDeleteRow] = useState("");
 
   const limit = 5;
 
@@ -49,6 +50,7 @@ const PermissionMenu = () => {
   const handleClosePermission = () => {
     setPermissionRow(null);
     setIsDrawerOpen(false);
+    getPermission();
   };
 
   const handleUpdatePermission = (row) => {
@@ -57,12 +59,14 @@ const PermissionMenu = () => {
     setIsDrawerOpen(true);
   };
 
-  const handleOpenDeleteAlert = () => {
+  const handleOpenDeleteAlert = (row) => {
+    setDeleteRow(row);
     setDeleteAlert(true);
   };
 
   const handleCloseDeleteAlert = () => {
     setDeleteAlert(false);
+    getPermission();
   };
 
   const ActionButton = ({ row }) => (
@@ -70,7 +74,7 @@ const PermissionMenu = () => {
       <EditIcon className="icon" onClick={() => handleUpdatePermission(row)} />
       <DeleteIcon
         className="delete-icon icon"
-        onClick={handleOpenDeleteAlert}
+        onClick={() => handleOpenDeleteAlert(row.id)}
       />
     </>
   );
@@ -86,7 +90,12 @@ const PermissionMenu = () => {
 
   return (
     <>
-      <DeleteAlert open={deleteAlert} onClose={handleCloseDeleteAlert} />
+      <DeleteAlert
+        type="permission"
+        deleteValue={deleteRow}
+        open={deleteAlert}
+        onClose={handleCloseDeleteAlert}
+      />
       <PermissionDrawer
         title={drawerTitle}
         open={isDrawerOpen}
