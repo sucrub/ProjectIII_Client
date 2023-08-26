@@ -1,3 +1,5 @@
+import React, { useState } from "react";
+import { useCookies } from "react-cookie";
 import {
   AppBar,
   Box,
@@ -13,7 +15,6 @@ import {
   Link,
   SvgIcon,
 } from "@mui/material";
-import React, { useState } from "react";
 import NavbarStyle from "./index.style";
 
 const HomeIcon = (props) => {
@@ -26,6 +27,10 @@ const HomeIcon = (props) => {
 
 const Navbar = () => {
   const [anchorElUser, setAnchorElUser] = useState();
+  const [, , removeAccessToken, removeRefreshToken] = useCookies([
+    "accessToken",
+    "refreshToken",
+  ]);
 
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
@@ -36,7 +41,12 @@ const Navbar = () => {
   };
 
   const handleLogout = () => {
-    console.log("ok");
+    // Delete accessToken and refreshToken cookies
+    removeAccessToken("accessToken");
+    removeRefreshToken("refreshToken");
+
+    // Redirect to login page
+    window.location.href = "/login";
   };
 
   return (
@@ -45,7 +55,6 @@ const Navbar = () => {
         <Container maxWidth="xl">
           <Toolbar disableGutters>
             <Link href="/">
-              Ngoc
               <HomeIcon className="home-icon" />
             </Link>
             <Box className="mycampaign-button">

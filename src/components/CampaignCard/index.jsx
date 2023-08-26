@@ -14,10 +14,10 @@ const CampaignCard = (props) => {
     <Card>
       <CardContent sx={{ width: "60vw" }}>
         <Typography gutterBottom variant="h5" component="div">
-          {campaign.name}
+          {campaign.title}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {campaign.description}
+          {campaign.content}
         </Typography>
       </CardContent>
       <CardActions>
