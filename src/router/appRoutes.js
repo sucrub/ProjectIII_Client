@@ -4,6 +4,8 @@ import ForgotPassword from "../pages/ForgotPassword";
 import RoleManagement from "../pages/RoleManagement";
 import Home from "../pages/Home";
 import ResetPassword from "../pages/ResetPassword";
+import CampaignDetail from "../pages/CampaignDetail";
+import MyTask from "../pages/MyTask";
 import routes from "../constants/route";
 
 const allRoutes = [
@@ -48,6 +50,20 @@ const allRoutes = [
     exact: true,
     restricted: true,
     isPrivate: false,
+  },
+  {
+    path: routes.CAMPAIGN_DETAIL,
+    component: CampaignDetail,
+    exact: true,
+    restricted: true,
+    isPrivate: true,
+  },
+  {
+    path: routes.MY_TASK,
+    component: MyTask,
+    exact: true,
+    restricted: true,
+    isPrivate: true,
   },
 ];
 
