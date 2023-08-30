@@ -39,7 +39,6 @@ const updatePermission = async (data, id) => {
 };
 
 const deletePermission = async (id) => {
-  console.log(id);
   let url = `/permission/delete-permission/${id}`;
   const permission = await api({
     headers: { Authorization: `Bearer ${accessToken}` },
@@ -49,4 +48,20 @@ const deletePermission = async (id) => {
   return permission;
 };
 
-export { getPermission, addPermission, updatePermission, deletePermission };
+const getAllPermission = async () => {
+  let url = `/permission/get-permissions`;
+  const permissions = await api({
+    headers: { Authorization: `Bearer ${accessToken}` },
+    method: "GET",
+    url,
+  });
+  return permissions;
+};
+
+export {
+  getPermission,
+  addPermission,
+  updatePermission,
+  deletePermission,
+  getAllPermission,
+};
