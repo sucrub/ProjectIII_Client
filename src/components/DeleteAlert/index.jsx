@@ -24,6 +24,10 @@ const DeleteAlert = (props) => {
       const result = await api.admin.deleteAdmin(deleteValue);
       console.log(result);
     }
+    if (type === "role") {
+      const result = await api.role.deleteRole(deleteValue);
+      console.log(result);
+    }
     onClose();
   };
 

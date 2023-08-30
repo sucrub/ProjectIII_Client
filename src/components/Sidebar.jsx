@@ -8,15 +8,25 @@ const Sidebar = () => {
       sx={{
         height: "90%",
         padding: "16px",
-        backgroundColor: "#fff", // Set background color to white
+        backgroundColor: "#fff",
         color: (theme) => theme.palette.text.primary,
-        marginTop: "20px", // Add a small gap on the top
+        marginTop: "20px",
         marginLeft: "10px",
         marginRight: "10px",
       }}
     >
       <List>
-        <Link href="/" underline="none" color="inherit">
+        <Link
+          href="/"
+          underline="none"
+          color="inherit"
+          sx={{
+            color: "inherit",
+            "&:hover": {
+              color: "#fff",
+            },
+          }}
+        >
           <ListItem
             button
             sx={{
@@ -38,7 +48,17 @@ const Sidebar = () => {
             />
           </ListItem>
         </Link>
-        <Link href="/role-management" underline="none" color="inherit">
+        <Link
+          href="/role-management"
+          underline="none"
+          color="inherit"
+          sx={{
+            color: "inherit",
+            "&:hover": {
+              color: "#fff",
+            },
+          }}
+        >
           <ListItem
             button
             sx={{
@@ -60,7 +80,17 @@ const Sidebar = () => {
             />
           </ListItem>
         </Link>
-        <Link href="/my-tasks" underline="none" color="inherit">
+        <Link
+          href="/my-tasks"
+          underline="none"
+          color="inherit"
+          sx={{
+            color: "inherit",
+            "&:hover": {
+              color: "#fff",
+            },
+          }}
+        >
           <ListItem
             button
             sx={{

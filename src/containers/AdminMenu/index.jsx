@@ -7,24 +7,6 @@ import AdminDrawer from "./AdminDrawer";
 import DeleteAlert from "../../components/DeleteAlert";
 import api from "../../apis";
 
-const admins = [
-  {
-    id: "13h1k2lh3kl",
-    email: "bachpx.vbee@gmail.com",
-    role: "SERVER ADMIN",
-  },
-  {
-    id: "1h32k21h323k",
-    email: "bachspham@gmail.com",
-    role: "SERVER ADMIN",
-  },
-  {
-    id: "l1k2j32l1k3",
-    email: "bachspham1@gmail.com",
-    role: "SERVER ADMIN",
-  },
-];
-
 const columns = ["ID", "Email", "Phân quyền", "Hành động"];
 
 const AdminMenu = () => {

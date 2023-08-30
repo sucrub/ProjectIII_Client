@@ -10,6 +10,11 @@ import {
 
 const CampaignCard = (props) => {
   const { campaign } = props;
+  const truncatedContent =
+    campaign.content.length > 50
+      ? campaign.content.substring(0, 50) + "..." // Truncate content if it's longer than 50 characters
+      : campaign.content;
+
   return (
     <Card>
       <CardContent sx={{ width: "60vw" }}>
@@ -17,7 +22,7 @@ const CampaignCard = (props) => {
           {campaign.title}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {campaign.content}
+          {truncatedContent}
         </Typography>
       </CardContent>
       <CardActions>
