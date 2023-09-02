@@ -6,7 +6,7 @@ const DeleteAlertStyle = styled(Dialog)`
     .dialog-title {
       text-align: center;
       height: 6vh;
-      margin-bottom: 1%;
+      margin-bottom: 5%;
     }
     .cancel-icon {
       font-size: 80px;

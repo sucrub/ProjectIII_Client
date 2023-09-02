@@ -28,6 +28,10 @@ const DeleteAlert = (props) => {
       const result = await api.role.deleteRole(deleteValue);
       console.log(result);
     }
+    if (type === "task") {
+      const result = await api.task.deleteTask(deleteValue);
+      console.log(result);
+    }
     onClose();
   };
 

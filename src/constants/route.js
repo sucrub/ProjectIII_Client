@@ -7,6 +7,7 @@ const route = {
   RESET_PASSWORD: "/reset-password/:token",
   CAMPAIGN_DETAIL: "/campaign/:campaignId",
   MY_TASK: "/my-tasks",
+  TASK: "/task/:taskId",
 };
 
 export default route;

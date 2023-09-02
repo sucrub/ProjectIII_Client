@@ -6,6 +6,7 @@ import Home from "../pages/Home";
 import ResetPassword from "../pages/ResetPassword";
 import CampaignDetail from "../pages/CampaignDetail";
 import MyTask from "../pages/MyTask";
+import TaskDetail from "../pages/TaskDetail";
 import routes from "../constants/route";
 
 const allRoutes = [
@@ -61,6 +62,13 @@ const allRoutes = [
   {
     path: routes.MY_TASK,
     component: MyTask,
+    exact: true,
+    restricted: true,
+    isPrivate: true,
+  },
+  {
+    path: routes.TASK,
+    component: TaskDetail,
     exact: true,
     restricted: true,
     isPrivate: true,
