@@ -3,8 +3,11 @@ import { useParams } from "react-router-dom";
 import { Typography, Button, Paper, Box } from "@mui/material";
 import EditDialog from "./EditCampaign"; // Import the EditDialog component
 import api from "../../apis";
+import DeleteAlert from "../../components/DeleteAlert";
 
 const CampaignContent = () => {
+  const [deleteAlert, setDeleteAlert] = useState(false);
+  const [deleteData, setDeleteData] = useState("");
   const [campaignDetail, setCampaignDetail] = useState({});
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
 
@@ -41,8 +44,28 @@ const CampaignContent = () => {
     setIsEditDialogOpen(false);
   };
 
+  const handleOpenDeleteAlert = (data) => {
+    setDeleteData(data);
+    setDeleteAlert(true);
+  };
+
+  const handleCloseDeleteAlert = () => {
+    setDeleteAlert(false);
+    getCampaignDetail();
+  };
+
+  const handleDeleteCampaign = () => {
+    handleOpenDeleteAlert(campaignId);
+  };
+
   return (
     <Box width="70vw" margin="0 auto">
+      <DeleteAlert
+        type="campaign"
+        deleteValue={deleteData}
+        open={deleteAlert}
+        onClose={handleCloseDeleteAlert}
+      />
       <Paper elevation={3} style={{ padding: "20px" }}>
         <Typography variant="h3">{campaignDetail.title}</Typography>
         <Typography>{campaignDetail.content}</Typography>
@@ -55,6 +78,14 @@ const CampaignContent = () => {
         onClick={handleEditClick}
       >
         Edit
+      </Button>
+      <Button
+        variant="contained"
+        color="error"
+        style={{ marginTop: "20px", marginLeft: "3%" }}
+        onClick={handleDeleteCampaign}
+      >
+        Delete
       </Button>
 
       <EditDialog

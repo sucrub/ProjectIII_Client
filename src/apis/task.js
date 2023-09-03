@@ -4,7 +4,17 @@ import api from "./api";
 const accessToken = getCookie("accessToken");
 
 const getTaskByCampaign = async (campaignId) => {
-  let url = `/task/get-task-by-campaign-id/${campaignId}`;
+  const url = `/task/get-task-by-campaign-id/${campaignId}`;
+  const tasks = await api({
+    headers: { Authorization: `Bearer ${accessToken}` },
+    method: "GET",
+    url,
+  });
+  return tasks;
+};
+
+const getMyTask = async () => {
+  const url = `/task/get-my-task`;
   const tasks = await api({
     headers: { Authorization: `Bearer ${accessToken}` },
     method: "GET",
@@ -14,7 +24,7 @@ const getTaskByCampaign = async (campaignId) => {
 };
 
 const addTask = async (data) => {
-  let url = `/task/create-task`;
+  const url = `/task/create-task`;
   const task = await api({
     headers: { Authorization: `Bearer ${accessToken}` },
     method: "POST",
@@ -25,7 +35,7 @@ const addTask = async (data) => {
 };
 
 const deleteTask = async (taskId) => {
-  let url = `/task/delete-task/${taskId}`;
+  const url = `/task/delete-task/${taskId}`;
   const task = await api({
     headers: { Authorization: `Bearer ${accessToken}` },
     method: "DELETE",
@@ -35,7 +45,7 @@ const deleteTask = async (taskId) => {
 };
 
 const getTaskById = async (taskId) => {
-  let url = `task/get-task-by-id/${taskId}`;
+  const url = `task/get-task-by-id/${taskId}`;
   const task = await api({
     headers: { Authorization: `Bearer ${accessToken}` },
     method: "GET",
@@ -44,4 +54,22 @@ const getTaskById = async (taskId) => {
   return task;
 };
 
-export { getTaskByCampaign, addTask, deleteTask, getTaskById };
+const updateTask = async (taskId, data) => {
+  const url = `/task/update-task/${taskId}`;
+  const task = await api({
+    headers: { Authorization: `Bearer ${accessToken}` },
+    method: "PUT",
+    url,
+    data,
+  });
+  return task;
+};
+
+export {
+  getTaskByCampaign,
+  addTask,
+  deleteTask,
+  getTaskById,
+  getMyTask,
+  updateTask,
+};

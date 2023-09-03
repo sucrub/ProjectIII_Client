@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Table,
   TableBody,
@@ -10,52 +10,36 @@ import {
   Typography,
   TablePagination,
   IconButton,
+  Button,
 } from "@mui/material";
-import { Edit, Delete } from "@mui/icons-material"; // Import icons
+import { useParams } from "react-router-dom";
+import api from "../../apis";
+import { Edit, Delete } from "@mui/icons-material";
+import EditRoleDialog from "./EditRoleDialog";
+import DeleteAlert from "../../components/DeleteAlert";
+import AddMemberDialog from "./AddMemberDialog";
 
-const members = [
-  {
-    id: 1,
-    name: "John Doe",
-    email: "john@example.com",
-    role: "Developer",
-  },
-  {
-    id: 2,
-    name: "Jane Smith",
-    email: "jane@example.com",
-    role: "Designer",
-  },
-  {
-    id: 3,
-    name: "Alice Johnson",
-    email: "alice@example.com",
-    role: "Manager",
-  },
-  {
-    id: 4,
-    name: "Bob Brown",
-    email: "bob@example.com",
-    role: "Engineer",
-  },
-  {
-    id: 5,
-    name: "Eva White",
-    email: "eva@example.com",
-    role: "Tester",
-  },
-  {
-    id: 6,
-    name: "Sam Green",
-    email: "sam@example.com",
-    role: "Designer",
-  },
-  // Add more members as needed
-];
-
-function MemberContent() {
+const MemberContent = () => {
+  const { campaignId } = useParams();
+  const [memberData, setMemberData] = useState([]);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
+  const [isEditRoleDialogOpen, setIsEditRoleDialogOpen] = useState(false);
+  const [isAddMemberDialogOpen, setIsAddMemberDialogOpen] = useState(false);
+  const [selectedUserId, setSelectedUserId] = useState(null);
+  const [selectedUserRole, setSelectedUserRole] = useState("");
+  const [deleteAlert, setDeleteAlert] = useState(false);
+  const [deleteData, setDeleteData] = useState({});
+
+  const getMemberData = async () => {
+    const result = await api.campaign.getAllMember(campaignId);
+    console.log(result.result.members);
+    setMemberData(result.result.members);
+  };
+
+  useEffect(() => {
+    getMemberData();
+  }, []);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -66,22 +50,89 @@ function MemberContent() {
     setPage(0);
   };
 
-  const handleEditClick = (id) => {
-    console.log("Edit", id);
+  const handleEditRoleClick = (userId, currentRole) => {
+    setSelectedUserId(userId);
+    setSelectedUserRole(currentRole);
+    setIsEditRoleDialogOpen(true);
+  };
+
+  const handleEditRoleSave = (newRole) => {
+    console.log("Save Role", selectedUserId, newRole);
   };
 
   const handleDeleteClick = (id) => {
-    console.log("Delete", id);
+    handleOpenDeleteAlert({
+      userId: id,
+      campaignId,
+    });
   };
 
-  const displayedMembers = members.slice(
+  const handleOpenDeleteAlert = (data) => {
+    setDeleteData(data);
+    setDeleteAlert(true);
+  };
+
+  const handleCloseDeleteAlert = () => {
+    setDeleteAlert(false);
+    getMemberData();
+  };
+
+  const handleCloseEditRole = () => {
+    getMemberData();
+    setIsEditRoleDialogOpen(false);
+  };
+
+  const handleAddMemberClick = () => {
+    setIsAddMemberDialogOpen(true);
+  };
+
+  const handleAddMember = async ({ email, role }) => {
+    // Perform the action to add a member with the provided email and role
+    // You can send an API request here if needed
+    const result = await api.campaign.addMember({
+      email,
+      role,
+      campaignId,
+    });
+    console.log(result);
+    getMemberData();
+  };
+
+  const handleCloseAddMember = () => {
+    setIsAddMemberDialogOpen(false);
+  };
+
+  // Conditional rendering: Render the component only when memberData is not empty
+  if (memberData.length === 0) {
+    return (
+      <div>
+        <Typography variant="h4">Member List</Typography>
+        <p>No members found.</p>
+      </div>
+    );
+  }
+
+  const displayedMembers = memberData.slice(
     page * rowsPerPage,
     page * rowsPerPage + rowsPerPage
   );
 
   return (
     <div>
+      <DeleteAlert
+        type="member"
+        deleteValue={deleteData}
+        open={deleteAlert}
+        onClose={handleCloseDeleteAlert}
+      />
       <Typography variant="h4">Member List</Typography>
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={handleAddMemberClick}
+      >
+        Add Member
+      </Button>
       <TableContainer sx={{ width: "60vw" }} component={Paper}>
         <Table>
           <TableHead>
@@ -95,13 +146,15 @@ function MemberContent() {
           <TableBody>
             {displayedMembers.map((member) => (
               <TableRow key={member.id}>
-                <TableCell>{member.name}</TableCell>
+                <TableCell>
+                  {member.firstName} {member.lastName}
+                </TableCell>
                 <TableCell>{member.email}</TableCell>
                 <TableCell>{member.role}</TableCell>
                 <TableCell>
                   <IconButton
                     color="primary"
-                    onClick={() => handleEditClick(member.id)}
+                    onClick={() => handleEditRoleClick(member.id, member.role)}
                   >
                     <Edit />
                   </IconButton>
@@ -120,14 +173,27 @@ function MemberContent() {
       <TablePagination
         rowsPerPageOptions={[5, 10, 25]}
         component="div"
-        count={members.length}
+        count={memberData.length}
         rowsPerPage={rowsPerPage}
         page={page}
         onPageChange={handleChangePage}
         onRowsPerPageChange={handleChangeRowsPerPage}
       />
+      <EditRoleDialog
+        open={isEditRoleDialogOpen}
+        onClose={handleCloseEditRole}
+        currentRole={selectedUserRole} // Pass the current role as a prop
+        userId={selectedUserId}
+        campaignId={campaignId}
+        onSave={handleEditRoleSave}
+      />
+      <AddMemberDialog
+        open={isAddMemberDialogOpen}
+        onClose={handleCloseAddMember}
+        onAddMember={handleAddMember}
+      />
     </div>
   );
-}
+};
 
 export default MemberContent;

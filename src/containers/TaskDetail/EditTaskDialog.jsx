@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Dialog,
   DialogTitle,
@@ -7,10 +7,23 @@ import {
   Button,
   TextField,
 } from "@mui/material";
+import api from "../../apis";
 
-const EditTaskDialog = ({ open, onClose, initialStatus, initialProgress }) => {
-  const [status, setStatus] = useState(initialStatus);
-  const [progress, setProgress] = useState(initialProgress);
+const EditTaskDialog = ({
+  open,
+  onClose,
+  initialStatus,
+  initialProgress,
+  taskId,
+}) => {
+  const [status, setStatus] = useState("");
+  const [progress, setProgress] = useState("");
+
+  // Use useEffect to set initial values when the component mounts
+  useEffect(() => {
+    setStatus(initialStatus);
+    setProgress(initialProgress);
+  }, [initialStatus, initialProgress]);
 
   const handleStatusChange = (e) => {
     setStatus(e.target.value);
@@ -20,10 +33,12 @@ const EditTaskDialog = ({ open, onClose, initialStatus, initialProgress }) => {
     setProgress(e.target.value);
   };
 
-  const handleSave = () => {
-    // Perform the save/update action with status and progress
-    // You can send an API request here if needed
-    // Close the dialog when done
+  const handleSave = async () => {
+    console.log(status, progress, taskId);
+    const result = await api.task.updateTask(taskId, {
+      status,
+      progress,
+    });
     onClose();
   };
 
@@ -32,20 +47,23 @@ const EditTaskDialog = ({ open, onClose, initialStatus, initialProgress }) => {
       <DialogTitle>Edit Task</DialogTitle>
       <DialogContent>
         <TextField
+          sx={{ marginTop: "5%" }}
           label="Status"
           fullWidth
           value={status}
           onChange={handleStatusChange}
         />
         <TextField
+          sx={{ marginTop: "8%" }}
           label="Progress"
           fullWidth
+          type="number"
           value={progress}
           onChange={handleProgressChange}
         />
       </DialogContent>
       <DialogActions>
-        <Button onClick={onClose} color="secondary">
+        <Button onClick={onClose} color="error">
           Cancel
         </Button>
         <Button onClick={handleSave} color="primary">

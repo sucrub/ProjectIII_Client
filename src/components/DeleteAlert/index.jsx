@@ -9,9 +9,12 @@ import {
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 import DeleteAlertStyle from "./index.style";
 import api from "../../apis";
+import { useHistory } from "react-router-dom";
 
 const DeleteAlert = (props) => {
   const { deleteValue, open, onClose, type } = props;
+
+  const history = useHistory();
 
   console.log(deleteValue);
 
@@ -31,6 +34,16 @@ const DeleteAlert = (props) => {
     if (type === "task") {
       const result = await api.task.deleteTask(deleteValue);
       console.log(result);
+    }
+    if (type === "member") {
+      const result = await api.campaign.deleteMember(deleteValue);
+      console.log(result);
+    }
+    if (type === "campaign") {
+      const result = await api.campaign.deleteCampaign(deleteValue);
+      console.log(result);
+      history.push("/");
+      window.location.reload();
     }
     onClose();
   };

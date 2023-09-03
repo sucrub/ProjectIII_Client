@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Sidebar from "../../components/Sidebar";
 import {
   CircularProgress,
@@ -12,6 +12,7 @@ import {
   Grid,
 } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
+import api from "../../apis";
 
 const tasks = [
   {
@@ -32,6 +33,18 @@ const tasks = [
 ];
 
 const MyTask = () => {
+  const [taskData, setTaskData] = useState([]);
+
+  const getTaskData = async () => {
+    const result = await api.task.getMyTask();
+    console.log(result.result.tasks);
+    setTaskData(result.result.tasks);
+  };
+
+  useEffect(() => {
+    getTaskData();
+  }, []);
+
   return (
     <Grid container>
       <Grid item xs={2} style={{ height: "100vh" }}>
@@ -39,8 +52,8 @@ const MyTask = () => {
       </Grid>
       <Grid item xs={10}>
         <Grid container direction="column" alignItems="center">
-          <List sx={{ marginTop: "1%" }}>
-            {tasks.map((task) => (
+          <List sx={{ overflowY: "auto", maxHeight: "80vh", marginTop: "1%" }}>
+            {taskData.map((task) => (
               <ListItem key={task.id}>
                 <Paper
                   elevation={3}
@@ -76,10 +89,14 @@ const MyTask = () => {
                     />
                   </Box>
                   <Typography variant="body2" color="primary">
-                    <Link component={RouterLink} to={`/task/${task.id}`}>
-                      <Typography variant="body1" color="primary">
-                        DETAILS
-                      </Typography>
+                    <Link
+                      href={`/task/${task.id}`}
+                      variant="body1"
+                      color="primary"
+                      underline="none"
+                      sx={{ marginRight: "8px" }}
+                    >
+                      DETAILS
                     </Link>
                   </Typography>
                 </Paper>

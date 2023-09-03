@@ -31,6 +31,11 @@ const TaskDetail = () => {
     setIsEditDialogOpen(true);
   };
 
+  const handleCloseEdit = () => {
+    setIsEditDialogOpen(false);
+    getTaskData();
+  };
+
   return (
     <Grid container>
       <Grid item xs={2} style={{ height: "100vh" }}>
@@ -88,7 +93,8 @@ const TaskDetail = () => {
           </Button>
           <EditTaskDialog
             open={isEditDialogOpen}
-            onClose={() => setIsEditDialogOpen(false)}
+            taskId={taskData.id}
+            onClose={handleCloseEdit}
             initialStatus={taskData.status}
             initialProgress={taskData.progress}
           />
