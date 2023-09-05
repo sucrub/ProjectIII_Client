@@ -30,6 +30,15 @@ const MemberContent = () => {
   const [selectedUserRole, setSelectedUserRole] = useState("");
   const [deleteAlert, setDeleteAlert] = useState(false);
   const [deleteData, setDeleteData] = useState({});
+  const [canAddMember, setCanAddMember] = useState("");
+
+  const checkAddMember = async () => {
+    const result = await api.auth.checkPermission({
+      campaignId,
+      permissionName: "Them thanh vien",
+    });
+    setCanAddMember(result);
+  };
 
   const getMemberData = async () => {
     const result = await api.campaign.getAllMember(campaignId);
@@ -39,6 +48,7 @@ const MemberContent = () => {
 
   useEffect(() => {
     getMemberData();
+    checkAddMember();
   }, []);
 
   const handleChangePage = (event, newPage) => {
@@ -126,13 +136,15 @@ const MemberContent = () => {
         onClose={handleCloseDeleteAlert}
       />
       <Typography variant="h4">Member List</Typography>
-      <Button
-        variant="contained"
-        color="primary"
-        onClick={handleAddMemberClick}
-      >
-        Add Member
-      </Button>
+      {canAddMember === "Yes" && (
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={handleAddMemberClick}
+        >
+          Add Member
+        </Button>
+      )}
       <TableContainer sx={{ width: "60vw" }} component={Paper}>
         <Table>
           <TableHead>

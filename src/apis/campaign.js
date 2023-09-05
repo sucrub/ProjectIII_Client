@@ -87,6 +87,27 @@ const addMember = async (data) => {
   return member;
 };
 
+const createCampaign = async (data) => {
+  const url = `/campaign/create-campaign`;
+  const campaign = await api({
+    headers: { Authorization: `Bearer ${accessToken}` },
+    method: "POST",
+    url,
+    data,
+  });
+  return campaign;
+};
+
+const isMember = async (campaignId) => {
+  const url = `/campaign/is-member/${campaignId}`;
+  const result = await api({
+    headers: { Authorization: `Bearer ${accessToken}` },
+    method: "GET",
+    url,
+  });
+  return result;
+};
+
 export {
   getMyCampaign,
   getCampaignDetail,
@@ -96,4 +117,6 @@ export {
   deleteMember,
   addMember,
   deleteCampaign,
+  createCampaign,
+  isMember,
 };

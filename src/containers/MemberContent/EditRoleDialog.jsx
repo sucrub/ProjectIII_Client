@@ -51,7 +51,7 @@ const EditRoleDialog = ({
         </FormControl>
       </DialogContent>
       <DialogActions>
-        <Button onClick={onClose} color="secondary">
+        <Button onClick={onClose} color="error">
           Cancel
         </Button>
         <Button onClick={handleSaveClick} color="primary">

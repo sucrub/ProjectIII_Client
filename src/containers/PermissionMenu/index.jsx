@@ -7,7 +7,7 @@ import PermissionDrawer from "./PermissionDrawer";
 import DeleteAlert from "../../components/DeleteAlert";
 import api from "../../apis";
 
-const columns = ["Tên quyền", "Đường dẫn", "Phương thức", "Loại", "Hành động"];
+const columns = ["Name", "Path", "Type", "Method", "Action"];
 
 const PermissionMenu = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -105,7 +105,7 @@ const PermissionMenu = () => {
       <PermissionMenuStyle>
         <div className="add-button">
           <Button variant="contained" onClick={handleAddPermission}>
-            Tạo quyền
+            Create permission
           </Button>
         </div>
         <DataTable

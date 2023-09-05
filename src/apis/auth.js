@@ -1,4 +1,18 @@
+import { getCookie } from "../utils/cookie";
 import api from "./api";
+
+const accessToken = getCookie("accessToken");
+
+const checkPermission = async (data) => {
+  const url = `/auths/check-permission`;
+  const result = await api({
+    headers: { Authorization: `Bearer ${accessToken}` },
+    method: "POST",
+    url,
+    data,
+  });
+  return result;
+};
 
 const register = async (data) => {
   const accountInfo = await api({
@@ -36,4 +50,4 @@ const resetPassword = async (token, data) => {
   return result;
 };
 
-export { register, login, forgotPassword, resetPassword };
+export { register, login, forgotPassword, resetPassword, checkPermission };

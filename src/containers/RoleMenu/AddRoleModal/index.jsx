@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import { Clear as ClearIcon } from "@mui/icons-material";
 import AddRoleModalStyle from "./index.style";
-import api from "../../apis";
+import api from "../../../apis";
 
 const AddRoleModal = (props) => {
   const { open, onClose } = props;
@@ -43,7 +43,7 @@ const AddRoleModal = (props) => {
             className="add-title"
             sx={{ fontWeight: "bold", textAlign: "center", mt: "5vh" }}
           >
-            Thêm vai trò mới
+            Add new role
           </Typography>
         </Box>
         <Grid
@@ -53,12 +53,12 @@ const AddRoleModal = (props) => {
           sx={{ width: "80%", mt: "10vh", ml: "5vh", md: "5vh" }}
         >
           <Typography variant="h7" sx={{ fontWeight: "bold", mb: "7px" }}>
-            Tên vai trò
+            Role name
           </Typography>
           <TextField
             required
             id="name"
-            label="Nhập tên vai trò"
+            label="Role name"
             autoFocus
             value={roleName}
             className="text-field"
@@ -77,7 +77,7 @@ const AddRoleModal = (props) => {
           variant="contained"
           sx={{ mt: "4%", width: "20%", ml: "5vh" }}
         >
-          Thêm
+          Add
         </Button>
       </Drawer>
     </AddRoleModalStyle>

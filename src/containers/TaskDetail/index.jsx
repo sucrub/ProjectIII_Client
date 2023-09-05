@@ -17,14 +17,21 @@ const TaskDetail = () => {
   const { taskId } = useParams();
   const [taskData, setTaskData] = useState({});
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
+  const [isMember, setIsMember] = useState("");
 
   const getTaskData = async () => {
     const result = await api.task.getTaskById(taskId);
     setTaskData(result.result.task);
   };
 
+  const isMemberData = async () => {
+    const result = await api.task.isMember(taskId);
+    setIsMember(result);
+  };
+
   useEffect(() => {
     getTaskData();
+    isMemberData();
   }, []);
 
   const handleEditClick = () => {
@@ -88,9 +95,15 @@ const TaskDetail = () => {
               </ListItem>
             </List>
           </Paper>
-          <Button variant="contained" color="primary" onClick={handleEditClick}>
-            Edit
-          </Button>
+          {isMember === "Yes" && (
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={handleEditClick}
+            >
+              Edit
+            </Button>
+          )}
           <EditTaskDialog
             open={isEditDialogOpen}
             taskId={taskData.id}

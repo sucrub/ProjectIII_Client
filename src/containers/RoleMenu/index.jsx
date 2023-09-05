@@ -16,16 +16,16 @@ import {
   Add as AddIcon,
 } from "@mui/icons-material";
 import React, { useEffect, useState } from "react";
-import AddRoleModal from "../../components/AddRoleModal";
+import AddRoleModal from "./AddRoleModal";
 import TabPanel from "../../components/TabPanel";
 import RoleMenuStyle from "./index.style";
 import api from "../../apis";
 import DeleteAlert from "../../components/DeleteAlert";
+import { ToastContainer, toast } from "react-toastify";
 
 const RoleMenu = () => {
   const [roleList, setRoleList] = useState([]);
   const [permissionList, setPermissionList] = useState([]);
-  const [searchInput, setSearchInput] = useState("");
   const [searchResult, setSearchResult] = useState([]);
   const [checkedPermissions, setCheckedPermissions] = useState([]);
   const [openAddRole, setOpenAddRole] = useState(false);
@@ -40,6 +40,7 @@ const RoleMenu = () => {
     setRoleList(result.result.roles.documents);
     setSearchResult(result.result.roles.documents);
     setActiveRole(result.result.roles.documents[0].id);
+    setCheckedPermissions(result.result.roles.documents[0].permission);
   };
 
   useEffect(() => {
@@ -66,17 +67,6 @@ const RoleMenu = () => {
     setCheckedPermissions(result[0].permission);
   };
 
-  useEffect(() => {
-    const results = roleList.filter((role) =>
-      role.name.toLowerCase().includes(searchInput.toLowerCase())
-    );
-    setSearchResult(results);
-    if (results.length > 0) {
-      setActiveRole(results[0].id);
-      // setCheckedPermissions(results[0].permission);
-    }
-  }, []);
-
   const handlePermissionChange = (e, permissionId) => {
     setCheckedPermissions((prevPermissions) => {
       if (e.target.checked) {
@@ -88,27 +78,20 @@ const RoleMenu = () => {
       }
     });
 
-    // Move the isChanged check here after setCheckedPermissions
-    // because the state update might not be immediate
-    setIsChanged((prevIsChanged) => {
-      const result = roleList.find((role) => role.id === activeRole);
-      const sameArr =
-        JSON.stringify(result.permission.sort()) ===
-        JSON.stringify(checkedPermissions.sort());
-      return prevIsChanged || !sameArr;
-    });
+    setIsChanged(true); // Always set isChanged to true when permissions change
   };
 
   const handleSaveChange = async () => {
     const result = roleList.filter((role) => role.id === activeRole)[0];
     console.log(result);
     const data = {
-      permission: checkedPermissions.sort(),
+      permission: checkedPermissions,
     };
     console.log(data);
     const apiResult = await api.role.setRole(result.id, data);
     console.log(apiResult);
     getAllRole();
+    toast.success("Save successfully");
   };
 
   const handleOpenDeleteAlert = (data) => {
@@ -127,6 +110,7 @@ const RoleMenu = () => {
 
   return (
     <RoleMenuStyle>
+      <ToastContainer theme="colored" />
       <DeleteAlert
         type="role"
         deleteValue={deleteData}
@@ -140,10 +124,11 @@ const RoleMenu = () => {
         alignItems="center"
       >
         <Grid container justifyContent="space-between">
-          <Box>
+          <Box />
+          <Box mr={14}>
             <Button onClick={() => setOpenAddRole(true)} className="btn-create">
               <AddIcon />
-              Thêm vai trò
+              Add role
             </Button>
           </Box>
         </Grid>
@@ -161,7 +146,7 @@ const RoleMenu = () => {
                 variant="h4"
                 className="role-title"
               >
-                Danh sách vai trò
+                Role List
               </Typography>
             </Box>
             <Tabs
@@ -232,15 +217,16 @@ const RoleMenu = () => {
           </Grid>
         </Grid>
 
-        <Grid container justifyContent="space-between">
+        <Grid mt={2} container justifyContent="space-between">
+          <Box />
           <Box>
-            <Button onClick={handleDeleteRole} className="btn-delete">
-              <DeleteForeverIcon />
-              Xóa vai trò
-            </Button>
             <Button onClick={handleSaveChange}>
               <SaveIcon />
-              Lưu thay đổi
+              Save
+            </Button>
+            <Button onClick={handleDeleteRole} className="btn-delete">
+              <DeleteForeverIcon />
+              Delete role
             </Button>
           </Box>
         </Grid>

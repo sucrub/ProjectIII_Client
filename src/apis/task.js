@@ -65,6 +65,16 @@ const updateTask = async (taskId, data) => {
   return task;
 };
 
+const isMember = async (taskId) => {
+  const url = `/task/is-member/${taskId}`;
+  const result = await api({
+    headers: { Authorization: `Bearer ${accessToken}` },
+    method: "GET",
+    url,
+  });
+  return result;
+};
+
 export {
   getTaskByCampaign,
   addTask,
@@ -72,4 +82,5 @@ export {
   getTaskById,
   getMyTask,
   updateTask,
+  isMember,
 };

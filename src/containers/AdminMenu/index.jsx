@@ -82,7 +82,7 @@ const AdminMenu = () => {
       <AdminDrawer open={adminDrawer} onClose={handleCloseAdminDrawer} />
       <div className="add-button">
         <Button variant="contained" onClick={handleOpenAdminDrawer}>
-          Thêm admin
+          Add admin
         </Button>
       </div>
       <DataTable

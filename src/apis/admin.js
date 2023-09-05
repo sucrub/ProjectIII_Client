@@ -17,7 +17,7 @@ const getAdmin = async (data) => {
 };
 
 const addAdmin = async (data) => {
-  let url = `/admin/add-server-admin`;
+  const url = `/admin/add-server-admin`;
   const admin = await api({
     headers: { Authorization: `Bearer ${accessToken}` },
     method: "POST",
@@ -28,7 +28,7 @@ const addAdmin = async (data) => {
 };
 
 const deleteAdmin = async (id) => {
-  let url = `/admin/delete-server-admin/${id}`;
+  const url = `/admin/delete-server-admin/${id}`;
   const admin = await api({
     headers: { Authorization: `Bearer ${accessToken}` },
     method: "DELETE",
@@ -37,4 +37,14 @@ const deleteAdmin = async (id) => {
   return admin;
 };
 
-export { getAdmin, addAdmin, deleteAdmin };
+const isAdmin = async () => {
+  const url = `/admin/is-admin`;
+  const result = await api({
+    headers: { Authorization: `Bearer ${accessToken}` },
+    method: "GET",
+    url,
+  });
+  return result;
+};
+
+export { getAdmin, addAdmin, deleteAdmin, isAdmin };

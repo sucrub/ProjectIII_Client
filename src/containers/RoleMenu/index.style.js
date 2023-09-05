@@ -14,6 +14,8 @@ const RoleMenuStyle = styled.div`
     margin-top: 15px;
     padding-top: 2px;
     height: 70%;
+    display: flex;
+    justify-content: space-between;
   }
   .grid-role {
     width: 30%;
@@ -45,7 +47,6 @@ const RoleMenuStyle = styled.div`
     background-color: #1976d2;
     width: 200%;
     margin: 5px auto 10px auto;
-    hover: ;
   }
   .btn-create:hover {
     cursor: pointer;
