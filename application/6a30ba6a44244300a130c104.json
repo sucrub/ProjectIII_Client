@@ -1,0 +1,336 @@
+{
+  "id" : "6a30ba6a44244300a130c104",
+  "gid" : "019ece58-30b6-7b04-ad60-036227f9aa4e",
+  "name" : "admin@localhost's new module 1",
+  "applicationType" : 2,
+  "applicationStatus" : "RECYCLED",
+  "editingApplicationDSL" : {
+    "ui" : {
+      "compType" : "module",
+      "comp" : {
+        "events" : {
+          "enableEventTestMessage" : true
+        },
+        "container" : {
+          "layout" : {
+            "a95fa032" : {
+              "i" : "a95fa032",
+              "h" : 25,
+              "w" : 19,
+              "delayCollision" : true,
+              "x" : 5,
+              "y" : 13,
+              "pos" : 0
+            }
+          },
+          "items" : {
+            "a95fa032" : {
+              "compType" : "responsiveLayout",
+              "comp" : {
+                "columns" : {
+                  "manual" : [ {
+                    "id" : 0,
+                    "label" : "Column1",
+                    "key" : "Column1",
+                    "minWidth" : "",
+                    "background" : "",
+                    "backgroundImage" : "",
+                    "border" : "",
+                    "radius" : "",
+                    "margin" : "",
+                    "padding" : "",
+                    "hidden" : "false"
+                  }, {
+                    "id" : 1,
+                    "label" : "Column2",
+                    "key" : "Column2",
+                    "minWidth" : "",
+                    "background" : "",
+                    "backgroundImage" : "",
+                    "border" : "",
+                    "radius" : "",
+                    "margin" : "",
+                    "padding" : "",
+                    "hidden" : "false"
+                  } ]
+                },
+                "containers" : {
+                  "0" : {
+                    "layout" : { }
+                  },
+                  "1" : {
+                    "layout" : { }
+                  }
+                },
+                "horizontalGridCells" : 24,
+                "verticalGridCells" : 24,
+                "autoHeight" : "auto",
+                "rowBreak" : true,
+                "useComponentWidth" : true,
+                "matchColumnsHeight" : true,
+                "mainScrollbar" : false,
+                "columnPerRowLG" : "4",
+                "columnPerRowMD" : "2",
+                "columnPerRowSM" : "1",
+                "verticalSpacing" : "8",
+                "horizontalSpacing" : "8",
+                "showDataLoadingIndicators" : false,
+                "preventStyleOverwriting" : false,
+                "appliedThemeId" : "",
+                "version" : "latest"
+              },
+              "name" : "responsiveLayout1"
+            }
+          }
+        },
+        "containerSize" : {
+          "height" : 57,
+          "width" : 24
+        },
+        "containerRowCount" : 0,
+        "showDataLoadingIndicators" : false,
+        "preventStyleOverwriting" : false,
+        "appliedThemeId" : "",
+        "version" : "latest"
+      }
+    },
+    "refTree" : {
+      "value" : ""
+    },
+    "hooks" : [ {
+      "compType" : "urlParams",
+      "comp" : { },
+      "name" : "url"
+    }, {
+      "compType" : "dayJsLib",
+      "comp" : { },
+      "name" : "dayjs"
+    }, {
+      "compType" : "lodashJsLib",
+      "comp" : { },
+      "name" : "_"
+    }, {
+      "compType" : "utils",
+      "comp" : { },
+      "name" : "utils"
+    }, {
+      "compType" : "message",
+      "comp" : { },
+      "name" : "message"
+    }, {
+      "compType" : "toast",
+      "comp" : { },
+      "name" : "toast"
+    }, {
+      "compType" : "localStorage",
+      "comp" : { },
+      "name" : "localStorage"
+    }, {
+      "compType" : "currentUser",
+      "comp" : { },
+      "name" : "currentUser"
+    }, {
+      "compType" : "screenInfo",
+      "comp" : { },
+      "name" : "screenInfo"
+    }, {
+      "compType" : "theme",
+      "comp" : { },
+      "name" : "theme"
+    } ],
+    "settings" : {
+      "title" : "",
+      "description" : "",
+      "category" : "Business",
+      "showHeaderInPublic" : false,
+      "themeId" : "default",
+      "preventAppStylesOverwriting" : true,
+      "disableCollision" : false,
+      "lowcoderCompVersion" : "latest",
+      "maxWidth" : {
+        "dropdown" : "1920",
+        "input" : 0
+      },
+      "gridRowCount" : "Infinity",
+      "gridPaddingX" : "20",
+      "gridPaddingY" : "20"
+    },
+    "preload" : {
+      "script" : "",
+      "css" : "",
+      "globalCSS" : ""
+    }
+  },
+  "publicToAll" : false,
+  "publicToMarketplace" : false,
+  "agencyProfile" : false,
+  "editingUserId" : "",
+  "lastEditedAt" : "2026-06-16T02:52:26.678Z",
+  "createdAt" : "2026-06-16T02:52:26.690Z",
+  "changeType" : "NONE",
+  "updatedAt" : "2026-06-16T04:16:39.419853200Z",
+  "createdBy" : "6a2fa94944244300a130bef3",
+  "slug" : null,
+  "organizationId" : "6a2fa94a44244300a130bef5",
+  "commitId" : null,
+  "lastCommitAt" : null,
+  "editingQueries" : [ ],
+  "editingModules" : [ ],
+  "editingApplicationDSLOrNull" : {
+    "ui" : {
+      "compType" : "module",
+      "comp" : {
+        "events" : {
+          "enableEventTestMessage" : true
+        },
+        "container" : {
+          "layout" : {
+            "a95fa032" : {
+              "i" : "a95fa032",
+              "h" : 25,
+              "w" : 19,
+              "delayCollision" : true,
+              "x" : 5,
+              "y" : 13,
+              "pos" : 0
+            }
+          },
+          "items" : {
+            "a95fa032" : {
+              "compType" : "responsiveLayout",
+              "comp" : {
+                "columns" : {
+                  "manual" : [ {
+                    "id" : 0,
+                    "label" : "Column1",
+                    "key" : "Column1",
+                    "minWidth" : "",
+                    "background" : "",
+                    "backgroundImage" : "",
+                    "border" : "",
+                    "radius" : "",
+                    "margin" : "",
+                    "padding" : "",
+                    "hidden" : "false"
+                  }, {
+                    "id" : 1,
+                    "label" : "Column2",
+                    "key" : "Column2",
+                    "minWidth" : "",
+                    "background" : "",
+                    "backgroundImage" : "",
+                    "border" : "",
+                    "radius" : "",
+                    "margin" : "",
+                    "padding" : "",
+                    "hidden" : "false"
+                  } ]
+                },
+                "containers" : {
+                  "0" : {
+                    "layout" : { }
+                  },
+                  "1" : {
+                    "layout" : { }
+                  }
+                },
+                "horizontalGridCells" : 24,
+                "verticalGridCells" : 24,
+                "autoHeight" : "auto",
+                "rowBreak" : true,
+                "useComponentWidth" : true,
+                "matchColumnsHeight" : true,
+                "mainScrollbar" : false,
+                "columnPerRowLG" : "4",
+                "columnPerRowMD" : "2",
+                "columnPerRowSM" : "1",
+                "verticalSpacing" : "8",
+                "horizontalSpacing" : "8",
+                "showDataLoadingIndicators" : false,
+                "preventStyleOverwriting" : false,
+                "appliedThemeId" : "",
+                "version" : "latest"
+              },
+              "name" : "responsiveLayout1"
+            }
+          }
+        },
+        "containerSize" : {
+          "height" : 57,
+          "width" : 24
+        },
+        "containerRowCount" : 0,
+        "showDataLoadingIndicators" : false,
+        "preventStyleOverwriting" : false,
+        "appliedThemeId" : "",
+        "version" : "latest"
+      }
+    },
+    "refTree" : {
+      "value" : ""
+    },
+    "hooks" : [ {
+      "compType" : "urlParams",
+      "comp" : { },
+      "name" : "url"
+    }, {
+      "compType" : "dayJsLib",
+      "comp" : { },
+      "name" : "dayjs"
+    }, {
+      "compType" : "lodashJsLib",
+      "comp" : { },
+      "name" : "_"
+    }, {
+      "compType" : "utils",
+      "comp" : { },
+      "name" : "utils"
+    }, {
+      "compType" : "message",
+      "comp" : { },
+      "name" : "message"
+    }, {
+      "compType" : "toast",
+      "comp" : { },
+      "name" : "toast"
+    }, {
+      "compType" : "localStorage",
+      "comp" : { },
+      "name" : "localStorage"
+    }, {
+      "compType" : "currentUser",
+      "comp" : { },
+      "name" : "currentUser"
+    }, {
+      "compType" : "screenInfo",
+      "comp" : { },
+      "name" : "screenInfo"
+    }, {
+      "compType" : "theme",
+      "comp" : { },
+      "name" : "theme"
+    } ],
+    "settings" : {
+      "title" : "",
+      "description" : "",
+      "category" : "Business",
+      "showHeaderInPublic" : false,
+      "themeId" : "default",
+      "preventAppStylesOverwriting" : true,
+      "disableCollision" : false,
+      "lowcoderCompVersion" : "latest",
+      "maxWidth" : {
+        "dropdown" : "1920",
+        "input" : 0
+      },
+      "gridRowCount" : "Infinity",
+      "gridPaddingX" : "20",
+      "gridPaddingY" : "20"
+    },
+    "preload" : {
+      "script" : "",
+      "css" : "",
+      "globalCSS" : ""
+    }
+  }
+}

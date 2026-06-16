@@ -1,0 +1,331 @@
+{
+  "id" : "6a30b1bf44244300a130c097",
+  "gid" : "019ece36-533c-7ca5-a442-62bc9641a67e",
+  "name" : "Test Bach",
+  "applicationType" : 3,
+  "applicationStatus" : "NORMAL",
+  "editingApplicationDSL" : {
+    "ui" : {
+      "compType" : "navV2_VNPT",
+      "comp" : {
+        "dataOptionType" : "manual",
+        "items" : [ ],
+        "jsonItems" : "[]",
+        "width" : "240",
+        "backgroundImage" : "",
+        "mode" : "vertical",
+        "navItemStyle" : {
+          "margin" : "0px",
+          "padding" : "0px"
+        },
+        "menuHorizontalHeight" : "64px",
+        "showLogo" : true,
+        "logoUrl" : "",
+        "logoTitle" : "Logo Title",
+        "logoPosition" : "center",
+        "shape" : "circle",
+        "logoSize" : "42",
+        "logoImageMargin" : "15px 0px 15px 0px",
+        "logoImagePadding" : "0px",
+        "logoTitleMargin" : "0px 0px 0px 8px",
+        "logoTitlePadding" : "0px",
+        "logoTitleFontSize" : "20px",
+        "logoTitleTextColor" : "#000000",
+        "userName" : "",
+        "userNameMargin" : "0px 10px 0px 20px",
+        "userNamePadding" : "0px",
+        "userNameTextColor" : "#000000",
+        "userNameFontSize" : "14px",
+        "siderWidth" : "20%",
+        "siderCollapsedWidth" : "20px",
+        "siderStyle" : {
+          "containerSiderPadding" : "4px"
+        },
+        "siderCollapsible" : false,
+        "collapseButtonBackground" : "#ffffff",
+        "showIconsWhenCollapsed" : "hide",
+        "showIconsmenutabCollapsed" : "show",
+        "mobileHeaderBackground" : "#0056b3"
+      }
+    },
+    "queries" : [ {
+      "compType" : "alasql",
+      "comp" : {
+        "databaseType" : "localDB",
+        "database" : "INDEXEDDB",
+        "sql" : "SELECT * FROM test {{}}"
+      },
+      "id" : "kz1hi8mgwbn78zmx4u45qs3c",
+      "name" : "query1",
+      "order" : 1781576180154,
+      "datasourceId" : "",
+      "triggerType" : "automatic",
+      "onEvent" : [ ],
+      "notification" : {
+        "showSuccess" : true,
+        "showFail" : true,
+        "fail" : [ { } ]
+      },
+      "timeout" : "",
+      "confirmationModal" : { },
+      "variables" : [ ],
+      "periodic" : false,
+      "periodicTime" : "",
+      "cancelPrevious" : false,
+      "depQueryName" : "",
+      "delayTime" : "",
+      "isSecure" : true,
+      "externalToken" : "{{localStorage.values}}"
+    } ],
+    "refTree" : {
+      "value" : "",
+      "items" : [ {
+        "value" : "query1"
+      } ]
+    },
+    "hooks" : [ {
+      "compType" : "urlParams",
+      "comp" : { },
+      "name" : "url"
+    }, {
+      "compType" : "dayJsLib",
+      "comp" : { },
+      "name" : "dayjs"
+    }, {
+      "compType" : "lodashJsLib",
+      "comp" : { },
+      "name" : "_"
+    }, {
+      "compType" : "utils",
+      "comp" : { },
+      "name" : "utils"
+    }, {
+      "compType" : "message",
+      "comp" : { },
+      "name" : "message"
+    }, {
+      "compType" : "toast",
+      "comp" : { },
+      "name" : "toast"
+    }, {
+      "compType" : "localStorage",
+      "comp" : { },
+      "name" : "localStorage"
+    }, {
+      "compType" : "currentUser",
+      "comp" : { },
+      "name" : "currentUser"
+    }, {
+      "compType" : "screenInfo",
+      "comp" : { },
+      "name" : "screenInfo"
+    }, {
+      "compType" : "theme",
+      "comp" : { },
+      "name" : "theme"
+    } ],
+    "settings" : {
+      "title" : "",
+      "description" : "",
+      "category" : "Business",
+      "showHeaderInPublic" : false,
+      "themeId" : "default",
+      "preventAppStylesOverwriting" : true,
+      "disableCollision" : false,
+      "lowcoderCompVersion" : "latest",
+      "maxWidth" : {
+        "dropdown" : "1920",
+        "input" : 0
+      },
+      "gridRowCount" : "Infinity",
+      "gridPaddingX" : "20",
+      "gridPaddingY" : "20"
+    },
+    "preload" : {
+      "script" : "",
+      "css" : "",
+      "globalCSS" : ""
+    }
+  },
+  "publicToAll" : false,
+  "publicToMarketplace" : false,
+  "agencyProfile" : false,
+  "editingUserId" : "6a2fa94944244300a130bef3",
+  "lastEditedAt" : "2026-06-16T02:59:02.325Z",
+  "createdAt" : "2026-06-16T02:15:27.306Z",
+  "changeType" : "NONE",
+  "updatedAt" : "2026-06-16T04:16:39.405305400Z",
+  "createdBy" : "6a2fa94944244300a130bef3",
+  "slug" : null,
+  "organizationId" : "6a2fa94a44244300a130bef5",
+  "commitId" : null,
+  "lastCommitAt" : null,
+  "editingQueries" : [ {
+    "id" : "kz1hi8mgwbn78zmx4u45qs3c",
+    "gid" : null,
+    "name" : "query1",
+    "triggerType" : "automatic",
+    "baseQuery" : {
+      "datasourceId" : "",
+      "compType" : "alasql",
+      "comp" : {
+        "databaseType" : "localDB",
+        "database" : "INDEXEDDB",
+        "sql" : "SELECT * FROM test {{}}"
+      },
+      "timeout" : ""
+    },
+    "timeoutStr" : "",
+    "libraryRecordQueryId" : {
+      "libraryQueryId" : null,
+      "libraryQueryRecordId" : null,
+      "usingLiveRecord" : false,
+      "usingEditingRecord" : true
+    },
+    "usingLibraryQuery" : false
+  } ],
+  "editingModules" : [ ],
+  "editingApplicationDSLOrNull" : {
+    "ui" : {
+      "compType" : "navV2_VNPT",
+      "comp" : {
+        "dataOptionType" : "manual",
+        "items" : [ ],
+        "jsonItems" : "[]",
+        "width" : "240",
+        "backgroundImage" : "",
+        "mode" : "vertical",
+        "navItemStyle" : {
+          "margin" : "0px",
+          "padding" : "0px"
+        },
+        "menuHorizontalHeight" : "64px",
+        "showLogo" : true,
+        "logoUrl" : "",
+        "logoTitle" : "Logo Title",
+        "logoPosition" : "center",
+        "shape" : "circle",
+        "logoSize" : "42",
+        "logoImageMargin" : "15px 0px 15px 0px",
+        "logoImagePadding" : "0px",
+        "logoTitleMargin" : "0px 0px 0px 8px",
+        "logoTitlePadding" : "0px",
+        "logoTitleFontSize" : "20px",
+        "logoTitleTextColor" : "#000000",
+        "userName" : "",
+        "userNameMargin" : "0px 10px 0px 20px",
+        "userNamePadding" : "0px",
+        "userNameTextColor" : "#000000",
+        "userNameFontSize" : "14px",
+        "siderWidth" : "20%",
+        "siderCollapsedWidth" : "20px",
+        "siderStyle" : {
+          "containerSiderPadding" : "4px"
+        },
+        "siderCollapsible" : false,
+        "collapseButtonBackground" : "#ffffff",
+        "showIconsWhenCollapsed" : "hide",
+        "showIconsmenutabCollapsed" : "show",
+        "mobileHeaderBackground" : "#0056b3"
+      }
+    },
+    "queries" : [ {
+      "compType" : "alasql",
+      "comp" : {
+        "databaseType" : "localDB",
+        "database" : "INDEXEDDB",
+        "sql" : "SELECT * FROM test {{}}"
+      },
+      "id" : "kz1hi8mgwbn78zmx4u45qs3c",
+      "name" : "query1",
+      "order" : 1781576180154,
+      "datasourceId" : "",
+      "triggerType" : "automatic",
+      "onEvent" : [ ],
+      "notification" : {
+        "showSuccess" : true,
+        "showFail" : true,
+        "fail" : [ { } ]
+      },
+      "timeout" : "",
+      "confirmationModal" : { },
+      "variables" : [ ],
+      "periodic" : false,
+      "periodicTime" : "",
+      "cancelPrevious" : false,
+      "depQueryName" : "",
+      "delayTime" : "",
+      "isSecure" : true,
+      "externalToken" : "{{localStorage.values}}"
+    } ],
+    "refTree" : {
+      "value" : "",
+      "items" : [ {
+        "value" : "query1"
+      } ]
+    },
+    "hooks" : [ {
+      "compType" : "urlParams",
+      "comp" : { },
+      "name" : "url"
+    }, {
+      "compType" : "dayJsLib",
+      "comp" : { },
+      "name" : "dayjs"
+    }, {
+      "compType" : "lodashJsLib",
+      "comp" : { },
+      "name" : "_"
+    }, {
+      "compType" : "utils",
+      "comp" : { },
+      "name" : "utils"
+    }, {
+      "compType" : "message",
+      "comp" : { },
+      "name" : "message"
+    }, {
+      "compType" : "toast",
+      "comp" : { },
+      "name" : "toast"
+    }, {
+      "compType" : "localStorage",
+      "comp" : { },
+      "name" : "localStorage"
+    }, {
+      "compType" : "currentUser",
+      "comp" : { },
+      "name" : "currentUser"
+    }, {
+      "compType" : "screenInfo",
+      "comp" : { },
+      "name" : "screenInfo"
+    }, {
+      "compType" : "theme",
+      "comp" : { },
+      "name" : "theme"
+    } ],
+    "settings" : {
+      "title" : "",
+      "description" : "",
+      "category" : "Business",
+      "showHeaderInPublic" : false,
+      "themeId" : "default",
+      "preventAppStylesOverwriting" : true,
+      "disableCollision" : false,
+      "lowcoderCompVersion" : "latest",
+      "maxWidth" : {
+        "dropdown" : "1920",
+        "input" : 0
+      },
+      "gridRowCount" : "Infinity",
+      "gridPaddingX" : "20",
+      "gridPaddingY" : "20"
+    },
+    "preload" : {
+      "script" : "",
+      "css" : "",
+      "globalCSS" : ""
+    }
+  }
+}
